@@ -12,13 +12,13 @@ This project simulates a simple VHS rental service.
 ## Log In
 
 There are two types of users: Customers and Admins. To log in, use one of the accounts stored in the created database:
-- User 1 (autorization role: CUSTOMER):
+- User 1 (authorization role: CUSTOMER):
     - username: john 
     - password: john123
-- User 2 (autorization role: CUSTOMER):
+- User 2 (authorization role: CUSTOMER):
      - username: mary 
      - password: mary123
-- User 3 (autorization role: ADMIN):
+- User 3 (authorization role: ADMIN):
      - username: susan
     - password: susan123
 
