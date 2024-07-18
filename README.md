@@ -1,7 +1,7 @@
 # VHS Rental Application
 ## Blast From The Past
 
-This project simulates asimple VHS rental service.
+This project simulates a simple VHS rental service.
 
 ## Set Up
 
