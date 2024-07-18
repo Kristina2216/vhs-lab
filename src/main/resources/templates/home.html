@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>VHS Shop Blast from the past</title>
+</head>
+<body>
+<h2>VHS Shop Blast from the past</h2>
+<hr>
+<p>
+    Welcome back, <span sec:authentication="principal.username"></span>!
+</p>
+<hr>
+<div sec:authorize="hasRole('CUSTOMER')">
+    <p>
+        <a th:href="@{/api/vhs(available=${false})}"
+           class="btn btn-primary btn-sm mb-3">
+            RENT
+        </a>
+        <br><br>
+        <a th:href="@{/api/rentals}"
+           class="btn btn-primary btn-sm mb-3">
+            MY RENTALS
+        </a>
+    </p>
+</div>
+
+<hr>
+<div sec:authorize="hasRole('ADMIN')">
+    <a th:href="@{/api/allUsers}"
+       class="btn btn-primary btn-sm mb-3">
+        ALL USERS
+    </a>
+    <br><br>
+    <a th:href="@{/api/allVhs}"
+       class="btn btn-primary btn-sm mb-3">
+        ALL VHS
+    </a>
+    <br><br>
+    <a th:href="@{/api/allRentals}"
+       class="btn btn-primary btn-sm mb-3">
+        ALL RENTALS
+    </a>
+</div>
+<hr>
+
+<form action="#" th:action="@{/logout}" method="POST">
+    <input type="submit" value="Logout">
+</form>
+</body>
+</html>

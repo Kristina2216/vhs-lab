@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>An Error has occured</title>
+</head>
+<body>
+<span th:if="${errorMessage}"  th:text="${errorMessage}" />
+<a th:href="@{/api/}"
+   class="btn btn-primary btn-sm mb-3">
+    Back to home
+</a>
+</body>
+</html>

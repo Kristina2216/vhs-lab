@@ -1,78 +1,51 @@
-# VHS Rental shop - Blast from the past
+# VHS Rental Application
+## Blast From The Past
 
-We are creating a cutting edge VHS rental application management system for our special clients that value the old time retro VHS experience. 
+This project simulates asimple VHS rental service.
 
-![img_1.png](backtothepast.png)
+## Set Up
 
-### VHS Rental Application
+- Run the create-vhs-db to create the local database tables
+- Edit database connection in the application.properties file
+- Run the application and go to localhost : http://localhost:8080/
 
-#### API
-1. Implement a VHS resource RESTful API over http. 
-Path to this resource should be: /api/vhs
-3. Implement CRUD RESTful API for Rental resource. 
-Path to this resource should be: /api/rental
-#### JPA
-- Model VHS as JPA Entity
-- Model User as JPA Entity
-- Model Rental as JPA Entity
-#### Requirements
-- RentalController should accept needed user ID data, vhs ID data, and rental date(use form or PATH parameters) 
-- Make sure that the same vhs can't have multiple rentals on the same date
-- handle rental due dates and late fees
-- 4 HTTP methods should be implemented. (e.g. GET, POST, PUT and DELETE)
-- Use Spring Data JPA Repositories
-- Use Slf4j Logback logging 
-- Implement @ExceptionHandler to catch and handle all exceptions
-- Use Bean Validation on RentalForm to validate requests to RentalController
-- Customize error messages from REST controller with Message Source
-- Prepopulate database of choice (H2, Postgresql or any other non-Oracle database)
-- Create an automated test for functionality of choice 
+## Log In
 
+There are two types of users: Customers and Admins. To log in, use one of the accounts stored in the created database:
+- User 1 (autorization role: CUSTOMER):
+    - username: john 
+    - password: john123
+- User 2 (autorization role: CUSTOMER):
+     - username: mary 
+     - password: mary123
+- User 3 (autorization role: ADMIN):
+     - username: susan
+    - password: susan123
 
-#### UI or Postman collection
-Create a simple postman collection for our VHS rental shop that will have these mandatory actions (put it in your git repository root folder):
-- VHS
-  - List
-  - VHS Rent and Return option
-- List of Rentals
+Customers can create a rental, cancel/return a rental and view their own rentals.
+Admins can view all vhs, users and rentals, view selected user rentals, add or delete a vhs.
+##  Rental settings
+By default, each rental is created on a one day period (the due date is set as the rental date + 1). The rental fee and the daily delay fee can be edited in the application.properties file.
 
+## Create a Rental
+To create a rental, you must be logged in as a customer. Select RENT option from home screen, then select the desired movie by clicking the Rent button next to it. Select the desired start date and click Rent to comfirm. The selected rental date cannot be in the past. If the selected vhs is available for the selected period (rental date and the next one), a new rental will be created and displayed.
 
-# Guidance:
+## Return/Cancel/Edit a Rental
+To return/cancel a rental, you must be logged in as a customer. Select MY RENTALS option from home screen.
+Customer can return a rental that is currently active (rental date is in the past or today) by clicking the Return button next to it.
+Customer can cancel/edit a rental if it's not yet active (rental date is in the future) by clicking the cancel/edit reservation button next to it. If the users attempts to edit the reservation, but the newly selected dates aren't available, the reservation will not be changed.
 
+## View all users/vhs/rentals
+To view all users/vhs/rentals you must be logged in as admin. Select ALL USERS/ALL VHS/ALL RENTALS option from the home screen.
+To view only particular user's rentals, first select ALL USERS option, then click on the details button next to the desired user's username.
 
-## Setup development environment
-### Linux
+## Add a vhs
+To add a vhs, you must be looged in as admin. Select ALL VHS option from the home screen, then click on the "Add a VHS" button. Fill out the title and genre fields. The title field must be unique. Both fields are required (non null). Once you've entered the necessary fields press Save to confirm creation. 
 
-1. Install Java JDK 14 or higher : http://jdk.java.net/14/
-2. Install Maven 3.6.0 or higher: https://maven.apache.org/install.html
-3. Install Git: https://www.atlassian.com/git/tutorials/install-git
-4. Install IntelliJ IDEA CE: https://www.jetbrains.com/idea/download
-5. Postman: https://www.postman.com/
+## Edit/delete a vhs
+To edit/delete a vhs, you must be looged in as admin. Select ALL VHS option from the home screen.
+Admin can edit a vhs by selecting the edit option next to the desired vhs. The title field must be unique. Both fields are required (non null). Once the desired properties have been edited, confirm edit by clicking the save option.
+Admin can delete a vhs by selecting the delete option next to the desired vhs. All of the rentals containing the selected vhs will be deleted too.
 
 
-### Windows
-
-1. Install Java JDK 14 or higher: http://jdk.java.net/14/
-2. Install Maven 3.6.3 or higher: https://maven.apache.org/install.html
-3. Install Git: https://www.atlassian.com/git/tutorials/install-git
-4. Install IntelliJ IDEA CE: https://www.jetbrains.com/idea/download
-5. Postman: https://www.postman.com/
-
-
-### Setup your account and repository
-1. Setup GitHub account
-2. Checkout repository with assignment
-3. Fork your own repository
-4. Create your own branch
-5. Add your mentor as member to your repository with role Maintainer
-
-### Spring Initializr
-
-Visit the Spring Initializr to generate a new project with the required dependencies (Spring Web, Spring Data, ....).
-https://spring.io/guides/gs/spring-boot/
-
-### Books
-- Spring Introduction https://www.baeldung.com/spring-intro
-- https://start.spring.io/
-- https://www.manning.com/books/spring-boot-in-action
 
